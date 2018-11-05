@@ -4,7 +4,7 @@
         Add to Cart
     </button>
     <div class="top-row">
-      <div class="top part" :class="[saleBorderStyle]">
+      <div :class="['top', 'part', saleBorderStyle]">
         <div class="robot-name">
             {{selectedRobot.head.title}}
             <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
