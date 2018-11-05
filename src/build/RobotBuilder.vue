@@ -4,7 +4,7 @@
         Add to Cart
     </button>
     <div class="top-row">
-      <div class="top part" :class="{'sale-border' : selectedRobot.head.onSale}">
+      <div class="top part" :class="[saleBorderStyle]">
         <div class="robot-name">
             {{selectedRobot.head.title}}
             <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
@@ -123,20 +123,23 @@ export default {
         },
     },
     computed: {
-        headBorderStyle () {
-          return {
-            border: this.selectedRobot.head.onSale ? '3px solid red' : '3px solid #aaa'
-          }
-        },
-        selectedRobot() {
-            return {
-                head: availableParts.heads[this.selectedHeadIndex],
-                leftArm: availableParts.arms[this.selectedLeftArmIndex],
-                torso: availableParts.torsos[this.selectedTorsoIndex],
-                rightArm: availableParts.arms[this.selectedRightArmIndex],
-                base: availableParts.bases[this.selectedBaseIndex],
-            }
+      saleBorderStyle() {
+        return this.selectedRobot.head.onSale ? 'sale-border' : ''
+      },
+      headBorderStyle () {
+        return {
+          border: this.selectedRobot.head.onSale ? '3px solid red' : '3px solid #aaa'
         }
+      },
+      selectedRobot() {
+          return {
+              head: availableParts.heads[this.selectedHeadIndex],
+              leftArm: availableParts.arms[this.selectedLeftArmIndex],
+              torso: availableParts.torsos[this.selectedTorsoIndex],
+              rightArm: availableParts.arms[this.selectedRightArmIndex],
+              base: availableParts.bases[this.selectedBaseIndex],
+          }
+      }
     }
 };
 </script>
