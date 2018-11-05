@@ -74,6 +74,24 @@ function getNextValidIndex(index, length) {
 
 export default {
     name: 'RobotBuilder',
+    beforeCreate() {
+      console.log('before create');
+    },
+    created() {
+      console.log('component created');
+    },
+    beforeMount() {
+      console.log('before mount');
+    },
+    mounted() {
+      console.log('mounted');
+    },
+    beforeUpdate() {
+      console.log('before update');
+    },
+    updated() {
+      console.log('update');
+    },
     data() {
         return {
             availableParts,
@@ -144,15 +162,17 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .part {
   position: relative;
   width:165px;
   height:165px;
   border: 3px solid #aaa;
 } 
-.part img {
-  width:165px;
+.part {
+   img {
+    width:165px;
+}
 }
 .top-row {
   display:flex;
