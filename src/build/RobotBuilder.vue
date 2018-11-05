@@ -8,15 +8,15 @@
           {{selectedRobot.head.title}}
           <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
       </div> -->
-      <PartSelector />
+      <PartSelector :parts="availableParts.heads"/>
     </div>
     <div class="middle-row">
-      <PartSelector />
-      <PartSelector />
-      <PartSelector />
+      <PartSelector :parts="availableParts.arms"/>
+      <PartSelector :parts="availableParts.torsos"/>
+      <PartSelector :parts="availableParts.arms"/>
     </div>
     <div class="bottom-row">
-      <PartSelector />
+      <PartSelector :parts="availableParts.bases"/>
     </div>
     <div>
         <h1>Cart</h1>
@@ -44,39 +44,40 @@ import lifecycleHooksMixin from '../mixins/lifecycle-hooks-mixin';
 import PartSelector from './PartSelector.vue';
 
 export default {
-    name: 'RobotBuilder',
-    components: { PartSelector },
-    mixins: [lifecycleHooksMixin],
-    data() {
+  name: 'RobotBuilder',
+  components: { PartSelector },
+  mixins: [lifecycleHooksMixin],
+  data() {
+    return {
+      availableParts,
+      cart: [],
+      selectedRobot: {
+        head: {},
+        leftArm: {},
+        torso: {},
+        rightArm: {},
+        base: {},
+      },
+    };
+  },
+  methods: {
+    addToCart() {
+      const robot = this.selectedRobot;
+      const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost
+        + robot.base.cost;
+      this.cart.push(Object.assign({}, robot, { cost }));
+    },
+  },
+  computed: {
+    saleBorderStyle() {
+      return this.selectedRobot.head.onSale ? 'sale-border' : '';
+    },
+    headBorderStyle() {
       return {
-        availableParts,
-        cart: [],
-        selectedRobot: {
-          head: {},
-          leftArm: {},
-          torso: {},
-          rightArm: {},
-          base: {},
-        }
+        border: this.selectedRobot.head.onSale ? '3px solid red' : '3px solid #aaa',
       };
     },
-    methods: {
-      addToCart(){
-        const robot = this.selectedRobot;
-        const cost = robot.head.cost + robot.leftArm.cost + robot.torso.cost + robot.rightArm.cost + robot.base.cost;
-        this.cart.push(Object.assign({}, robot, {cost}));
-      },
-    },
-    computed: {
-      saleBorderStyle() {
-        return this.selectedRobot.head.onSale ? 'sale-border' : ''
-      },
-      headBorderStyle () {
-        return {
-          border: this.selectedRobot.head.onSale ? '3px solid red' : '3px solid #aaa'
-        }
-      },
-    }
+  },
 };
 </script>
 
@@ -86,11 +87,11 @@ export default {
   width:165px;
   height:165px;
   border: 3px solid #aaa;
-} 
+}
 .part {
    img {
     width:165px;
-}
+  }
 }
 .top-row {
   display:flex;
@@ -151,20 +152,20 @@ export default {
 .left .next-selector {
   top: auto;
   bottom: -28px;
-  left: -3px;    
+  left: -3px;
   width: 144px;
   height: 25px;
 }
 .right .prev-selector {
   top: -28px;
-  left: 24px;  
+  left: 24px;
   width: 144px;
   height: 25px;
 }
 .right .next-selector {
   top: auto;
   bottom: -28px;
-  left: 24px;    
+  left: 24px;
   width: 144px;
   height: 25px;
 }
