@@ -4,8 +4,10 @@
       <nav>
         <ul>
           <li class="nav-item">
-            <img class="logo" src="./assets/build-a-bot-logo.png" />
-            Build-a-Bot
+            <router-link :to="{name: 'Home'}">
+              <img class="logo" src="./assets/build-a-bot-logo.png" />
+              Build-a-Bot
+            </router-link>
           </li>
         </ul>
       </nav>
@@ -31,7 +33,7 @@ body {
 
 <style scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
 }
 main {
   margin: 0 auto;
