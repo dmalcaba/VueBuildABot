@@ -52,7 +52,7 @@
             <tbody>
                 <tr v-for="(robot, index) in cart" :key="index">
                     <td>{{robot.head.title}}</td>
-                    <td class="cost">{{robot.cost}}</td>
+                    <td class="cost">{{robot.cost | currency('$')}}</td>
                 </tr>
             </tbody>
         </table>
@@ -65,9 +65,13 @@ import availableParts from '../data/parts';
 import lifecycleHooksMixin from '../mixins/lifecycle-hooks-mixin';
 import PartSelector from './PartSelector.vue';
 import CollapsibleSection from '../shared/CollapsibleSection.vue';
+import currencyFilter from '../shared/currency-filter';
 
 export default {
   name: 'RobotBuilder',
+  filters: {
+    currency: currencyFilter,
+  },
   beforeRouteLeave(to, from, next) {
     if (this.addedToCart) {
       next(true);
