@@ -65,13 +65,9 @@ import availableParts from '../data/parts';
 import lifecycleHooksMixin from '../mixins/lifecycle-hooks-mixin';
 import PartSelector from './PartSelector.vue';
 import CollapsibleSection from '../shared/CollapsibleSection.vue';
-import currencyFilter from '../shared/currency-filter';
 
 export default {
   name: 'RobotBuilder',
-  filters: {
-    currency: currencyFilter,
-  },
   beforeRouteLeave(to, from, next) {
     if (this.addedToCart) {
       next(true);
