@@ -1,20 +1,20 @@
 export default {
   beforeCreate() {
-    console.log('before create');
+    // console.log('before create');
   },
   created() {
-    console.log('component created');
+    // console.log('component created');
   },
   beforeMount() {
-    console.log('before mount');
+    // console.log('before mount');
   },
   mounted() {
-    console.log('mounted');
+    // console.log('mounted');
   },
   beforeUpdate() {
-    console.log('before update');
+    // console.log('before update');
   },
   updated() {
-    console.log('update');
+    // console.log('update');
   },
 };
