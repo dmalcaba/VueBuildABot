@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "latest-version": "^5.1.0",
-    "npm": "^6.14.5",
+    "npm": "^6.14.7",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0",
-    "vuex": "^3.4.0"
+    "vue-router": "^3.3.4",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.1",
@@ -20,6 +20,8 @@
     "@vue/cli-service": "^3.12.1",
     "@vue/eslint-config-airbnb": "^4.0.1",
     "babel-eslint": "^10.1.0",
+    "dot-prop": "^5.2.0",
+    "elliptic": "^6.5.3",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^5.2.3",
     "node-sass": "^4.14.1",
